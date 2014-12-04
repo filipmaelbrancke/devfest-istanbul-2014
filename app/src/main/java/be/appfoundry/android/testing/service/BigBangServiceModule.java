@@ -1,7 +1,7 @@
 package be.appfoundry.android.testing.service;
 
 import android.os.AsyncTask;
-import be.appfoundry.android.testing.PersonListFragment;
+import be.appfoundry.android.testing.ui.fragment.PersonListFragment;
 import dagger.Module;
 import dagger.Provides;
 import javax.inject.Singleton;

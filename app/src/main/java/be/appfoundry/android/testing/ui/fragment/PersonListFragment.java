@@ -1,17 +1,16 @@
-package be.appfoundry.android.testing;
+package be.appfoundry.android.testing.ui.fragment;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.app.ListFragment;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import android.widget.Toast;
 import be.appfoundry.android.testing.di.DaggerHelper;
-import be.appfoundry.android.testing.dummy.DummyContent;
 import be.appfoundry.android.testing.model.Persons;
 import be.appfoundry.android.testing.service.BigBangService;
+import be.appfoundry.android.testing.ui.adapter.PersonAdapter;
 import javax.inject.Inject;
 import retrofit.Callback;
 import retrofit.RetrofitError;

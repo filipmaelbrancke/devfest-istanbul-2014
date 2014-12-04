@@ -1,4 +1,4 @@
-package be.appfoundry.android.testing;
+package be.appfoundry.android.testing.ui.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,7 +7,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import be.appfoundry.android.testing.R;
 import be.appfoundry.android.testing.model.Person;
+import be.appfoundry.android.testing.util.AppUtils;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import com.squareup.picasso.Picasso;
@@ -20,11 +22,8 @@ public class PersonAdapter extends ArrayAdapter<Person> {
 
     private static final String imageUrl = "https://appfoundry-restdemo.herokuapp.com/";
 
-    //private final List<Person> persons;
-
     public PersonAdapter(Context context, List<Person> persons) {
         super(context, R.layout.list_item, persons);
-        //this.persons = persons;
     }
 
     @Override
@@ -33,8 +32,6 @@ public class PersonAdapter extends ArrayAdapter<Person> {
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
             holder = new ViewHolder(convertView);
-            //holder.image = (ImageView) convertView.findViewById(R.id.list_item_photo);
-            //holder.label = (TextView) convertView.findViewById(R.id.list_item_label);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -45,6 +42,13 @@ public class PersonAdapter extends ArrayAdapter<Person> {
         holder.label.setText(person.getFullName());
 
         Picasso.with(getContext()).load(imageUrl + person.getImageUri()).into(holder.image);
+        holder.image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppUtils.launchWikipedia(getContext(), person.getWikipediaUrl(), person.getFullName());
+            }
+        });
+
         return convertView;
     }
 

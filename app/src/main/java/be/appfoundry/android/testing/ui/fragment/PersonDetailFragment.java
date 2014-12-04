@@ -1,4 +1,4 @@
-package be.appfoundry.android.testing;
+package be.appfoundry.android.testing.ui.fragment;
 
 import android.os.Bundle;
 import android.app.Fragment;
@@ -7,6 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import be.appfoundry.android.testing.ui.activity.PersonDetailActivity;
+import be.appfoundry.android.testing.ui.activity.PersonListActivity;
+import be.appfoundry.android.testing.R;
 import be.appfoundry.android.testing.dummy.DummyContent;
 
 /**

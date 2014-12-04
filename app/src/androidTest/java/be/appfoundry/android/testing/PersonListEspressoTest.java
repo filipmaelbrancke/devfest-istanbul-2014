@@ -2,13 +2,12 @@ package be.appfoundry.android.testing;
 
 import android.test.ActivityInstrumentationTestCase2;
 import be.appfoundry.android.testing.model.Person;
+import be.appfoundry.android.testing.ui.activity.PersonListActivity;
 
 import static com.google.android.apps.common.testing.ui.espresso.Espresso.onData;
 import static com.google.android.apps.common.testing.ui.espresso.action.ViewActions.click;
-import static org.hamcrest.Matchers.hasToString;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.startsWith;
 
 /**
  * @author Filip Maelbrancke

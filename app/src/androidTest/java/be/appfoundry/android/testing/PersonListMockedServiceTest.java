@@ -5,6 +5,7 @@ import be.appfoundry.android.testing.di.DaggerHelper;
 import be.appfoundry.android.testing.model.Person;
 import be.appfoundry.android.testing.service.BigBangService;
 import be.appfoundry.android.testing.service.MockBigBangService;
+import be.appfoundry.android.testing.ui.activity.PersonListActivity;
 import dagger.Module;
 import dagger.Provides;
 import javax.inject.Singleton;

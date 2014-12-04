@@ -1,8 +1,12 @@
-package be.appfoundry.android.testing;
+package be.appfoundry.android.testing.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
+import be.appfoundry.android.testing.ui.activity.PersonDetailActivity;
+import be.appfoundry.android.testing.R;
+import be.appfoundry.android.testing.ui.fragment.PersonDetailFragment;
+import be.appfoundry.android.testing.ui.fragment.PersonListFragment;
 
 /**
  * An activity representing a list of Persons. This activity

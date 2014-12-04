@@ -1,10 +1,13 @@
-package be.appfoundry.android.testing;
+package be.appfoundry.android.testing.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
 
 import android.view.MenuItem;
+import be.appfoundry.android.testing.R;
+import be.appfoundry.android.testing.ui.activity.PersonListActivity;
+import be.appfoundry.android.testing.ui.fragment.PersonDetailFragment;
 
 /**
  * An activity representing a single Person detail screen. This
