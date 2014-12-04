@@ -1,6 +1,8 @@
-package be.appfoundry.android.testing.service;
+package be.appfoundry.android.testing.di;
 
 import android.os.AsyncTask;
+import be.appfoundry.android.testing.service.BigBangService;
+import be.appfoundry.android.testing.ui.fragment.PersonDetailFragment;
 import be.appfoundry.android.testing.ui.fragment.PersonListFragment;
 import dagger.Module;
 import dagger.Provides;
@@ -12,7 +14,8 @@ import retrofit.android.MainThreadExecutor;
  * @author Filip Maelbrancke
  */
 @Module(injects = {
-    PersonListFragment.class
+    PersonListFragment.class,
+    PersonDetailFragment.class
 })
 public class BigBangServiceModule {
 

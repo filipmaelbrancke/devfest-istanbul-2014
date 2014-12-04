@@ -1,6 +1,5 @@
 package be.appfoundry.android.testing.di;
 
-import be.appfoundry.android.testing.service.BigBangServiceModule;
 import dagger.ObjectGraph;
 import java.util.ArrayList;
 import java.util.Arrays;

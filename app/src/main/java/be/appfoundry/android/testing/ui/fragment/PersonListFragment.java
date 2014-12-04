@@ -1,13 +1,13 @@
 package be.appfoundry.android.testing.ui.fragment;
 
 import android.app.Activity;
-import android.os.Bundle;
 import android.app.ListFragment;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
-
 import android.widget.Toast;
 import be.appfoundry.android.testing.di.DaggerHelper;
+import be.appfoundry.android.testing.model.Person;
 import be.appfoundry.android.testing.model.Persons;
 import be.appfoundry.android.testing.service.BigBangService;
 import be.appfoundry.android.testing.ui.adapter.PersonAdapter;
@@ -30,7 +30,7 @@ public class PersonListFragment extends ListFragment {
     @Inject
     BigBangService bigBangService;
 
-
+    PersonAdapter adapter;
 
     /**
      * The serialization (saved instance state) Bundle key representing the
@@ -65,11 +65,12 @@ public class PersonListFragment extends ListFragment {
      * A dummy implementation of the {@link PersonSelectedCallback} interface that does
      * nothing. Used only when this fragment is not attached to an activity.
      */
-    private static PersonSelectedCallback sDummyPersonSelectedCallback = new PersonSelectedCallback() {
-        @Override
-        public void onPersonSelected(String id) {
-        }
-    };
+    private static PersonSelectedCallback sDummyPersonSelectedCallback =
+        new PersonSelectedCallback() {
+            @Override
+            public void onPersonSelected(String id) {
+            }
+        };
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -132,13 +133,13 @@ public class PersonListFragment extends ListFragment {
     }
 
     Callback<Persons> bigBangCharactersCallback = new Callback<Persons>() {
+
         @Override
         public void success(Persons persons, Response response) {
 
             setListShown(true);
-            final PersonAdapter adapter = new PersonAdapter(getActivity(), persons.getPersons());
+            adapter = new PersonAdapter(getActivity(), persons.getPersons());
             getListView().setAdapter(adapter);
-
         }
 
         @Override
@@ -154,9 +155,10 @@ public class PersonListFragment extends ListFragment {
 
         // Notify the active callbacks interface (the activity, if the
         // fragment is attached to one) that a person has been selected.
-
-
-        // // // mPersonSelectedCallback.onPersonSelected(DummyData.PERSONS.get(position).id);
+        if (adapter != null) {
+            final Person selectedPerson = adapter.getItem(position);
+            mPersonSelectedCallback.onPersonSelected(selectedPerson.getId());
+        }
     }
 
     @Override

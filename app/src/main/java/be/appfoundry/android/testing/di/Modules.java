@@ -1,7 +1,5 @@
 package be.appfoundry.android.testing.di;
 
-import be.appfoundry.android.testing.service.BigBangServiceModule;
-
 /**
  * @author Filip Maelbrancke
  */
