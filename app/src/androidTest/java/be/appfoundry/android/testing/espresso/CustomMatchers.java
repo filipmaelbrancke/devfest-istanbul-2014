@@ -2,6 +2,8 @@ package be.appfoundry.android.testing.espresso;
 
 import android.view.View;
 import android.webkit.WebView;
+import be.appfoundry.android.testing.model.Person;
+import com.google.android.apps.common.testing.ui.espresso.matcher.BoundedMatcher;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
@@ -13,6 +15,21 @@ import static org.hamcrest.CoreMatchers.is;
  * @author Filip Maelbrancke
  */
 public class CustomMatchers {
+
+    public static Matcher<Object> withPerson(final String fullName) {
+
+        return new BoundedMatcher<Object, Person>(Person.class) {
+            @Override
+            protected boolean matchesSafely(Person person) {
+                return person.getFullName().equalsIgnoreCase(fullName);
+            }
+
+            @Override
+            public void describeTo(Description description) {
+                description.appendText("with fullname: ");
+            }
+        };
+    }
 
     public static Matcher<View> withResourceName(String resourceName) {
         return withResourceName(is(resourceName));
@@ -37,6 +54,7 @@ public class CustomMatchers {
     }
 
     public static Matcher<View> loadsUrl(final String url) {
+
         return new TypeSafeMatcher<View>() {
 
             @Override

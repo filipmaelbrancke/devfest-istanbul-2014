@@ -6,6 +6,7 @@ import be.appfoundry.android.testing.ui.activity.PersonListActivity;
 import com.google.android.apps.common.testing.ui.espresso.assertion.ViewAssertions;
 
 import static be.appfoundry.android.testing.espresso.CustomMatchers.loadsUrl;
+import static be.appfoundry.android.testing.espresso.CustomMatchers.withPerson;
 import static be.appfoundry.android.testing.espresso.CustomMatchers.withResourceName;
 import static com.google.android.apps.common.testing.ui.espresso.Espresso.onData;
 import static com.google.android.apps.common.testing.ui.espresso.Espresso.onView;
@@ -45,6 +46,11 @@ public class PersonListEspressoTest extends ActivityInstrumentationTestCase2<Per
     public void testClickOnSheldon() {
         // search for a row and perform action
         onData(hasToString(containsString("Sheldon"))).perform(click());
+    }
+
+    public void testClickOnAmy() {
+        onData(withPerson("Amy Farrah Fowler"))
+            .perform(click());
     }
 
     public void testClickOnPennyShouldShowPennyDetail() {
