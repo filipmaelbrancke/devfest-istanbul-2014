@@ -2,6 +2,7 @@ package be.appfoundry.android.testing.service;
 
 import android.content.Context;
 import be.appfoundry.android.testing.R;
+import be.appfoundry.android.testing.model.BigBangCharacter;
 import be.appfoundry.android.testing.model.Person;
 import be.appfoundry.android.testing.model.Persons;
 import be.appfoundry.android.testing.util.RestUtils;
@@ -41,11 +42,11 @@ public class MockBigBangService implements BigBangService {
     }
 
     @Override
-    public void getPersonDetail(@Path("id") String id, Callback<Person> callback) {
+    public void getPersonDetail(@Path("id") String id, Callback<BigBangCharacter> callback) {
         InputStream in = context.getResources().openRawResource(R.raw.howard);
         try {
-            Person person = gson.fromJson(RestUtils.getJsonReaderForInputStream(in), Person.class);
-            callback.success(person, null);
+            BigBangCharacter bigBangCharacter = gson.fromJson(RestUtils.getJsonReaderForInputStream(in), BigBangCharacter.class);
+            callback.success(bigBangCharacter, null);
         } catch (IOException e) {
             e.printStackTrace();
         }

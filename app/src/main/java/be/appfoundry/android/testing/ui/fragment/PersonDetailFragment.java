@@ -1,21 +1,20 @@
 package be.appfoundry.android.testing.ui.fragment;
 
-import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import be.appfoundry.android.testing.R;
 import be.appfoundry.android.testing.di.DaggerHelper;
+import be.appfoundry.android.testing.model.BigBangCharacter;
 import be.appfoundry.android.testing.model.Person;
 import be.appfoundry.android.testing.service.BigBangService;
 import be.appfoundry.android.testing.ui.activity.PersonDetailActivity;
 import be.appfoundry.android.testing.ui.activity.PersonListActivity;
-import be.appfoundry.android.testing.R;
-import be.appfoundry.android.testing.dummy.DummyContent;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import com.squareup.picasso.Picasso;
@@ -85,16 +84,6 @@ public class PersonDetailFragment extends Fragment {
         Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_person_detail, container, false);
 
-        // Show the dummy content
-        /*if (mPerson != null) {
-            ImageView image = (ImageView) rootView.findViewById(R.id.imageView);
-            Picasso.with(getActivity()).load(mPerson.imageResource).into(image);
-            ((TextView) rootView.findViewById(R.id.characterName)).setText(mPerson.toString());
-            ((TextView) rootView.findViewById(R.id.profession)).setText(mPerson.getProfession());
-            ((TextView) rootView.findViewById(R.id.realname)).setText(mPerson.getRealName());
-            ((TextView) rootView.findViewById(R.id.personDetail)).setText(mPerson.getBio());
-        }*/
-
         ButterKnife.inject(this, rootView);
 
         return rootView;
@@ -116,13 +105,16 @@ public class PersonDetailFragment extends Fragment {
         }
     }
 
-    Callback<Person> personDetailCallback = new Callback<Person>() {
+    Callback<BigBangCharacter> personDetailCallback = new Callback<BigBangCharacter>() {
 
         @Override
-        public void success(Person person, Response response) {
+        public void success(BigBangCharacter bigBangCharacter, Response response) {
+            final Person person = bigBangCharacter.getPerson();
             Picasso.with(getActivity()).load(imageUrl + person.getImageUri()).into(image);
             characterNameTextView.setText(person.getFullName());
             professionTextView.setText(person.getProfession());
+            realNameTextView.setText(person.getRealName());
+            bioTextView.setText(person.getBio());
         }
 
         @Override

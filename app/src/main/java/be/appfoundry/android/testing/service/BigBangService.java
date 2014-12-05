@@ -1,5 +1,6 @@
 package be.appfoundry.android.testing.service;
 
+import be.appfoundry.android.testing.model.BigBangCharacter;
 import be.appfoundry.android.testing.model.Person;
 import be.appfoundry.android.testing.model.Persons;
 import retrofit.Callback;
@@ -18,5 +19,5 @@ public interface BigBangService {
     public void getPersons(Callback<Persons> callback);
 
     @GET("/app/persons/{id}.json")
-    public void getPersonDetail(@Path("id") String id, Callback<Person> callback);
+    public void getPersonDetail(@Path("id") String id, Callback<BigBangCharacter> callback);
 }
