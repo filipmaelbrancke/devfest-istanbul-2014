@@ -99,15 +99,11 @@ public class PersonListFragment extends ListFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // // // PersonAdapter adapter = new PersonAdapter(getActivity(), DummyData.PERSONS);
-        //setListAdapter(adapter);
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
         Bundle savedInstanceState) {
-        //return super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_person_list, container, false);
         return view;
     }
@@ -133,7 +129,7 @@ public class PersonListFragment extends ListFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        bigBangService.getPersons(bigBangCharactersCallback);
+        getBigBangCharacters();
     }
 
     @Override
@@ -145,7 +141,7 @@ public class PersonListFragment extends ListFragment {
     }
 
     private void getBigBangCharacters() {
-
+        bigBangService.getPersons(bigBangCharactersCallback);
     }
 
     Callback<Persons> bigBangCharactersCallback = new Callback<Persons>() {
@@ -153,20 +149,14 @@ public class PersonListFragment extends ListFragment {
         @Override
         public void success(Persons persons, Response response) {
 
-            //setListShown(true);
             adapter = new PersonAdapter(getActivity(), persons.getPersons());
-            //getListView().setAdapter(adapter);
             setListAdapter(adapter);
-            /*adapter.changeData(persons.getPersons());*/
         }
 
         @Override
         public void failure(RetrofitError error) {
-            /*adapter.changeData(Collections.EMPTY_LIST);*/
             adapter = new PersonAdapter(getActivity(), Collections.EMPTY_LIST);
-            //getListView().setAdapter(adapter);
             setListAdapter(adapter);
-            //Toast.makeText(getActivity(), "Can't fetch persons", Toast.LENGTH_SHORT).show();
         }
     };
 

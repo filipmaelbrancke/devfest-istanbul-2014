@@ -52,7 +52,6 @@ public class PersonListActivity extends Activity
                 .setActivateOnItemClick(true);
         }
 
-        // TODO: If exposing deep links into your app, handle intents here.
     }
 
     /**

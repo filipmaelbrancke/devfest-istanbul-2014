@@ -20,8 +20,6 @@ import java.util.List;
  */
 public class PersonAdapter extends ArrayAdapter<Person> {
 
-    private static final String imageUrl = "https://appfoundry-restdemo.herokuapp.com/";
-
     public PersonAdapter(Context context, List<Person> persons) {
         super(context, R.layout.list_item, persons);
     }

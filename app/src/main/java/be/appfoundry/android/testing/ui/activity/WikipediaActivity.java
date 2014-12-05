@@ -36,7 +36,7 @@ public class WikipediaActivity extends Activity {
         ButterKnife.inject(this);
         final String url = getIntent().getStringExtra(WIKIPEDIA_URL);
         final String title = getIntent().getStringExtra(WIKIPEDIA_TITLE);
-        getActionBar().setTitle("wikipedia");
+        getActionBar().setTitle(getString(R.string.wikipedia));
         wikipediaTitle.setText(title);
         getActionBar().setDisplayHomeAsUpEnabled(true);
         loadWikipedia(url);

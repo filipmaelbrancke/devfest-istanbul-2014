@@ -8,12 +8,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Wikipedia"
+        android:text="@string/wikipedia"
         android:id="@+id/wikipedia_title"
-        android:gravity="center" />
+        android:gravity="center"
+        android:padding="8dp"/>
 
     <WebView
         android:id="@+id/wikipedia_webview"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"></WebView>
+        android:layout_height="fill_parent" />
 </LinearLayout>
