@@ -13,7 +13,7 @@ import retrofit.http.Path;
 public interface BigBangService {
 
     //public static final String URL = "http://10.0.3.2:8080/";
-    public static final String URL = "https://appfoundry-restdemo.herokuapp.com/";
+    //public static final String URL = "https://appfoundry-restdemo.herokuapp.com/";
 
     @GET("/app/persons.json")
     public void getPersons(Callback<Persons> callback);

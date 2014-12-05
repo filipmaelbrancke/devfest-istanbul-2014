@@ -41,7 +41,7 @@ public class PersonAdapter extends ArrayAdapter<Person> {
 
         holder.label.setText(person.getFullName());
 
-        Picasso.with(getContext()).load(imageUrl + person.getImageUri()).into(holder.image);
+        Picasso.with(getContext()).load(AppUtils.URL + person.getImageUri()).into(holder.image);
         holder.image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

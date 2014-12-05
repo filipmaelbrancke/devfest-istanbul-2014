@@ -3,14 +3,18 @@ package be.appfoundry.android.testing.ui.fragment;
 import android.app.Activity;
 import android.app.ListFragment;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
+import be.appfoundry.android.testing.R;
 import be.appfoundry.android.testing.di.DaggerHelper;
 import be.appfoundry.android.testing.model.Person;
 import be.appfoundry.android.testing.model.Persons;
 import be.appfoundry.android.testing.service.BigBangService;
 import be.appfoundry.android.testing.ui.adapter.PersonAdapter;
+import java.util.Collections;
 import javax.inject.Inject;
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -30,7 +34,7 @@ public class PersonListFragment extends ListFragment {
     @Inject
     BigBangService bigBangService;
 
-    PersonAdapter adapter;
+    private PersonAdapter adapter;
 
     /**
      * The serialization (saved instance state) Bundle key representing the
@@ -101,10 +105,22 @@ public class PersonListFragment extends ListFragment {
     }
 
     @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+        Bundle savedInstanceState) {
+        //return super.onCreateView(inflater, container, savedInstanceState);
+        View view = inflater.inflate(R.layout.fragment_person_list, container, false);
+        return view;
+    }
+
+    @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         DaggerHelper.inject(this);
+
+        adapter = new PersonAdapter(getActivity(), Collections.EMPTY_LIST);
+        //getListView().setAdapter(adapter);
+        setListAdapter(adapter);
 
         // Restore the previously serialized activated item position.
         if (savedInstanceState != null
@@ -137,15 +153,20 @@ public class PersonListFragment extends ListFragment {
         @Override
         public void success(Persons persons, Response response) {
 
-            setListShown(true);
+            //setListShown(true);
             adapter = new PersonAdapter(getActivity(), persons.getPersons());
-            getListView().setAdapter(adapter);
+            //getListView().setAdapter(adapter);
+            setListAdapter(adapter);
+            /*adapter.changeData(persons.getPersons());*/
         }
 
         @Override
         public void failure(RetrofitError error) {
-
-            Toast.makeText(getActivity(), "Can't fetch persons", Toast.LENGTH_SHORT).show();
+            /*adapter.changeData(Collections.EMPTY_LIST);*/
+            adapter = new PersonAdapter(getActivity(), Collections.EMPTY_LIST);
+            //getListView().setAdapter(adapter);
+            setListAdapter(adapter);
+            //Toast.makeText(getActivity(), "Can't fetch persons", Toast.LENGTH_SHORT).show();
         }
     };
 

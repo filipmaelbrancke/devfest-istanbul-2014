@@ -13,5 +13,6 @@
     <string name="person_mugshot_label">person mugshot</string>
     <string name="list_item_name">firstname lastname</string>
     <string name="list_item_mugshot_label">person mugshot</string>
+    <string name="no_persons">no persons found</string>
 
 </resources>
