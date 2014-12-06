@@ -15,6 +15,7 @@ import be.appfoundry.android.testing.model.Person;
 import be.appfoundry.android.testing.service.BigBangService;
 import be.appfoundry.android.testing.ui.activity.PersonDetailActivity;
 import be.appfoundry.android.testing.ui.activity.PersonListActivity;
+import be.appfoundry.android.testing.util.AppUtils;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import com.squareup.picasso.Picasso;
@@ -30,8 +31,6 @@ import retrofit.client.Response;
  * on handsets.
  */
 public class PersonDetailFragment extends Fragment {
-
-    private static final String imageUrl = "https://appfoundry-restdemo.herokuapp.com/";
 
     @Inject
     BigBangService bigBangService;
@@ -110,7 +109,8 @@ public class PersonDetailFragment extends Fragment {
         @Override
         public void success(BigBangCharacter bigBangCharacter, Response response) {
             final Person person = bigBangCharacter.getPerson();
-            Picasso.with(getActivity()).load(imageUrl + person.getImageUri()).into(image);
+            final String imagePath = AppUtils.URL + person.getImageUri();
+            Picasso.with(getActivity()).load(imagePath).into(image);
             characterNameTextView.setText(person.getFullName());
             professionTextView.setText(person.getProfession());
             realNameTextView.setText(person.getRealName());

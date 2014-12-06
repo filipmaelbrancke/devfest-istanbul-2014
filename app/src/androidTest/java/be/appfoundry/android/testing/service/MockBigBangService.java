@@ -3,7 +3,6 @@ package be.appfoundry.android.testing.service;
 import android.content.Context;
 import be.appfoundry.android.testing.R;
 import be.appfoundry.android.testing.model.BigBangCharacter;
-import be.appfoundry.android.testing.model.Person;
 import be.appfoundry.android.testing.model.Persons;
 import be.appfoundry.android.testing.util.RestUtils;
 import com.google.gson.Gson;
