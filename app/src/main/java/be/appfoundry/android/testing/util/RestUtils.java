@@ -54,7 +54,6 @@ public class RestUtils {
     public static JsonReader getJsonReaderForInputStream(final InputStream inputStream) throws IOException {
         final byte[] bytes = readFullInputStream(inputStream);
         final JsonReader jsonReader = getJsonReaderForBytes(bytes);
-        Log.e("JSON", jsonReader.toString());
         return jsonReader;
     }
 }

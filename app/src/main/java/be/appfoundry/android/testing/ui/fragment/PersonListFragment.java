@@ -115,7 +115,6 @@ public class PersonListFragment extends ListFragment {
         DaggerHelper.inject(this);
 
         adapter = new PersonAdapter(getActivity(), Collections.EMPTY_LIST);
-        //getListView().setAdapter(adapter);
         setListAdapter(adapter);
 
         // Restore the previously serialized activated item position.
